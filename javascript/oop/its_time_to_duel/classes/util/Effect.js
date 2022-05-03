@@ -15,7 +15,7 @@ module.exports = class Effect extends Card {
     if (!target instanceof Unit) {
       throw new Error("Target must be a unit!");
     }
-    target[this.stat] = target[this.stat] + this.magnitude;
+    target[this.stat] += this.magnitude;
     console.log(`${this.name} has been used on ${target.name}!`);
     console.log(
       `${target.name}'s ${this.stat} has been ${
