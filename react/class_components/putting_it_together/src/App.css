@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    display: block;
+    text-align: center;
+    margin: 8px;
+    margin-bottom: 32px;
+}
+
+button {
+    padding: 4px 8px;
+}
