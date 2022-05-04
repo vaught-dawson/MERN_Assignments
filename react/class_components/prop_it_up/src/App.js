@@ -1,4 +1,4 @@
-import Person from "./components/Person";
+import PersonCard from "./components/PersonCard";
 
 const people = [
   {
@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="App">
       {people.map((p, i) => (
-        <Person person={p} key={i} />
+        <PersonCard person={p} key={i} />
       ))}
     </div>
   );
