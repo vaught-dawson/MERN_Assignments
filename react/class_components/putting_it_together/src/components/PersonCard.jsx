@@ -25,7 +25,7 @@ class PersonCard extends Component {
         <p>Age: {this.state.age}</p>
         <p>Hair Color: {hairColor}</p>
         <button onClick={this.handleClick}>
-          Birthday Buton for {firstName} {lastName}
+          Birthday Button for {firstName} {lastName}
         </button>
       </div>
     );
