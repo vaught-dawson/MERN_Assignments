@@ -1,14 +1,23 @@
 import styles from "./Form.module.css";
-import { useState } from "react";
+import { useReducer } from "react";
+
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
+
+const reducer = (state, action) => {
+  return {
+    ...state,
+    [action.type]: action.payload,
+  };
+};
 
 const Form = () => {
-  const [form, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   // Never going to run because there's no form submit
   const getDataFromForm = (e) => {
@@ -16,10 +25,11 @@ const Form = () => {
   };
 
   const editFormData = (e) => {
-    const fieldName = e.target.attributes.getNamedItem("name").nodeValue;
-    let newFormData = { ...form };
-    newFormData[fieldName] = e.target.value;
-    setFormData(newFormData);
+    const { name, value } = e.target;
+    dispatch({
+      type: name,
+      payload: value,
+    });
   };
 
   return (
@@ -34,7 +44,7 @@ const Form = () => {
             onChange={(e) => editFormData(e)}
           />
         </div>
-        {form.firstName.length === 1 ? (
+        {state.firstName.length === 1 ? (
           <p className={styles.error}>
             First Name must be at least 2 characters
           </p>
@@ -47,7 +57,7 @@ const Form = () => {
             onChange={(e) => editFormData(e)}
           />
         </div>
-        {form.lastName.length === 1 ? (
+        {state.lastName.length === 1 ? (
           <p className={styles.error}>
             Last Name must be at least 2 characters
           </p>
@@ -56,7 +66,7 @@ const Form = () => {
           <label htmlFor="email">Email:</label>
           <input type="email" name="email" onChange={(e) => editFormData(e)} />
         </div>
-        {form.email.length < 5 && form.email.length > 0 ? (
+        {state.email.length < 5 && state.email.length > 0 ? (
           <p className={styles.error}>Email must be at least 5 characters</p>
         ) : null}
         <div className="password">
@@ -67,13 +77,13 @@ const Form = () => {
             onChange={(e) => editFormData(e)}
           />
         </div>
-        {form.password.length < 8 && form.password.length > 0 ? (
+        {state.password.length < 8 && state.password.length > 0 ? (
           <p className={styles.error}>
             Password must be at least 8 characters.
           </p>
         ) : null}
-        {form.confirmPassword.length > 0 &&
-        form.confirmPassword !== form.password ? (
+        {state.confirmPassword.length > 0 &&
+        state.confirmPassword !== state.password ? (
           <p className={styles.error}>Passwords must match</p>
         ) : null}
         <div className="confirm-password">
