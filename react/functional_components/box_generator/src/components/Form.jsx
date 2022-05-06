@@ -20,12 +20,9 @@ const Form = (props) => {
     setState(defaultState);
   };
 
-  const onColorInputChange = (e) => {
-    setState({ ...state, color: e.target.value });
-  };
-
-  const onSizeInputChange = (e) => {
-    setState({ ...state, size: e.target.value });
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+    setState({ ...state, [name]: value });
   };
 
   return (
@@ -34,16 +31,17 @@ const Form = (props) => {
       <input
         type="text"
         name="color"
-        onInput={(e) => onColorInputChange(e)}
+        onInput={(e) => onInputChange(e)}
         value={state.color}
         className={styles.inputBox}
       />
       <label htmlFor="size">Size</label>
       <input
-        type="size"
+        type="text"
+        name="size"
         className={styles.inputBox}
         value={state.size}
-        onInput={(e) => onSizeInputChange(e)}
+        onInput={(e) => onInputChange(e)}
       />
       <input type="submit" value="Add" className={styles.btn} />
     </form>
