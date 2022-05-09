@@ -30,9 +30,9 @@ const List = ({ list, setList }) => {
     setList(newList);
   };
 
-  const setItem = (item, newItem) => {
+  const setItem = (indx, newItem) => {
     const newList = [...list];
-    newList[list.indexOf(item)] = newItem;
+    newList[indx] = newItem;
     setList(newList);
   };
 
@@ -61,7 +61,7 @@ const List = ({ list, setList }) => {
             key={indx}
             item={item}
             handleCheckClick={(e) =>
-              setItem(item, { ...item, checked: e.target.checked })
+              setItem(indx, { ...item, checked: e.target.checked })
             }
             handleDelete={() => removeItem(item)}
           />
