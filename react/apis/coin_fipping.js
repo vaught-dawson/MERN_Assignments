@@ -33,6 +33,11 @@ function fiveHeads() {
       } else {
         headsCount = 0;
       }
+
+      if (attempts == 100)
+        reject(
+          "Couldn't get heads to flip 5 times in a row within 100 attempts."
+        );
     }
 
     resolve(attempts);
