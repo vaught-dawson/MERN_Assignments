@@ -33,6 +33,7 @@ const styles = {
     borderRadius: "4px",
     backgroundColor: "#0019f8",
     color: "white",
+    cursor: "pointer",
   },
 };
 
@@ -47,40 +48,53 @@ const SearchBar = () => {
     navigate(`/${catagoryState}/${parseInt(idState)}`);
   };
 
+  const handleBack = (e) => {
+    e.preventDefault();
+    navigate(-1);
+  };
+
   useEffect(() => {
     setCatagoryState(context.catagory);
     setIdState(context.id);
   }, [context]);
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)} style={styles.form}>
-      <label htmlFor="catagory" style={styles.label}>
-        Search for:{" "}
-      </label>
-      <select
-        name="catagory"
-        value={catagoryState}
-        onChange={(e) => setCatagoryState(e.target.value)}
-        style={styles.input}
+    <div className="form" style={styles.form}>
+      <button
+        style={{ ...styles.button, marginRight: "32px" }}
+        onClick={handleBack}
       >
-        {catagories.map((catagory, i) => (
-          <option value={catagory} key={i}>
-            {catagory.charAt(0).toUpperCase() + catagory.slice(1)}
-          </option>
-        ))}
-      </select>
-      <label htmlFor="id" style={styles.label}>
-        ID:
-      </label>
-      <input
-        type="number"
-        name="id"
-        value={idState}
-        onChange={(e) => setIdState(e.target.value)}
-        style={styles.input}
-      />
-      <button style={styles.button}>Search</button>
-    </form>
+        {"<- Back"}
+      </button>
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <label htmlFor="catagory" style={styles.label}>
+          Search for:{" "}
+        </label>
+        <select
+          name="catagory"
+          value={catagoryState}
+          onChange={(e) => setCatagoryState(e.target.value)}
+          style={styles.input}
+        >
+          {catagories.map((catagory, i) => (
+            <option value={catagory} key={i}>
+              {catagory.charAt(0).toUpperCase() + catagory.slice(1)}
+            </option>
+          ))}
+        </select>
+        <label htmlFor="id" style={styles.label}>
+          ID:
+        </label>
+        <input
+          type="number"
+          name="id"
+          value={idState}
+          onChange={(e) => setIdState(e.target.value)}
+          style={styles.input}
+        />
+        <button style={styles.button}>Search</button>
+      </form>
+    </div>
   );
 };
 
