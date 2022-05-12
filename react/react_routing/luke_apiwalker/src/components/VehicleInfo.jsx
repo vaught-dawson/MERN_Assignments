@@ -3,6 +3,9 @@ const styles = {
     fontWeight: "bold",
     marginRight: "8px",
   },
+  header: {
+    marginBottom: "16px",
+  },
 };
 
 const VehicleInfo = ({
@@ -22,7 +25,7 @@ const VehicleInfo = ({
 }) => {
   return (
     <>
-      <h2>{name}</h2>
+      <h2 style={styles.header}>{name}</h2>
       <div className="model">
         <span style={styles.bold}>Model: </span>
         <span>{model}</span>

@@ -15,6 +15,9 @@ const styles = {
     marginTop: "8px",
     cursor: "pointer",
   },
+  header: {
+    marginBottom: "16px",
+  },
 };
 
 const SpeciesInfo = ({
@@ -54,7 +57,7 @@ const SpeciesInfo = ({
 
   return (
     <>
-      <h2>{name}</h2>
+      <h2 style={styles.header}>{name}</h2>
       <div className="classification">
         <span style={styles.bold}>Classification: </span>
         <span>{classification}</span>

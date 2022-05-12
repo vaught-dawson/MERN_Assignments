@@ -3,6 +3,9 @@ const styles = {
     fontWeight: "bold",
     marginRight: "8px",
   },
+  header: {
+    marginBottom: "16px",
+  },
 };
 
 const PlanetInfo = ({
@@ -20,7 +23,7 @@ const PlanetInfo = ({
 }) => {
   return (
     <>
-      <h2>{name}</h2>
+      <h2 style={styles.header}>{name}</h2>
       <div className="rotation-period">
         <span style={styles.bold}>Rotation Period: </span>
         <span>{rotation_period}</span>

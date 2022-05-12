@@ -14,7 +14,10 @@ const styles = {
   p: {
     width: "42%",
     margin: "8px 0",
-    textIndent: "42px",
+    textIndent: "24px",
+  },
+  header: {
+    marginBottom: "16px",
   },
 };
 
@@ -23,7 +26,7 @@ const FilmInfo = ({
 }) => {
   return (
     <>
-      <h2>{title}</h2>
+      <h2 style={styles.header}>{title}</h2>
       <div className="episode-id">
         <span style={styles.bold}>Episode Id: </span>
         <span>{episode_id}</span>

@@ -15,6 +15,9 @@ const styles = {
     marginTop: "8px",
     cursor: "pointer",
   },
+  header: {
+    marginBottom: "16px",
+  },
 };
 
 const PersonInfo = ({
@@ -53,7 +56,7 @@ const PersonInfo = ({
 
   return (
     <>
-      <h2>{name}</h2>
+      <h2 style={styles.header}>{name}</h2>
       <div className="height">
         <span style={styles.bold}>Height: </span>
         <span>{height}</span>
