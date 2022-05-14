@@ -16,6 +16,7 @@ const styles = {
     alignItems: "start",
     marginLeft: "42%",
     justifyContent: "center",
+    gap: "4px",
   },
 };
 
