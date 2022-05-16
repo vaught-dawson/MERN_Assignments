@@ -38,7 +38,12 @@ const ProductForm = () => {
         price,
         description,
       })
-      .then(() => alert("Sucessfully posted product to server"))
+      .then(() => {
+        alert("Sucessfully posted product to server");
+        setTitle("");
+        setPrice(0);
+        setDescription("");
+      })
       .catch((err) =>
         alert("There was an error posting the product to the server:", err)
       );
