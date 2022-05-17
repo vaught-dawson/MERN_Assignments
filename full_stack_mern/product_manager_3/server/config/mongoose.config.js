@@ -10,4 +10,4 @@ mongoose
     }
   )
   .then(() => console.log("[Event] Connected to database"))
-  .catch((err) => console.log("[ERROR] Failed to connect to database"));
+  .catch((err) => console.log("[ERROR] Failed to connect to database", err));
