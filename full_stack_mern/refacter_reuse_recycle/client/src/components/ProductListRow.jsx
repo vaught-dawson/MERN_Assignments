@@ -13,16 +13,6 @@ const styles = {
     padding: "4px",
     margin: "4px",
   },
-  button: {
-    padding: "4px 16px",
-    cursor: "pointer",
-    border: "none",
-    color: "white",
-    fontSize: "1em",
-    marginLeft: "4px",
-    textDecoration: "none",
-    borderRadius: "2px",
-  },
 };
 
 const ProductListRow = ({ product, refresh }) => {
