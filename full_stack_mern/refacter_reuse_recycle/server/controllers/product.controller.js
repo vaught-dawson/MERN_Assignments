@@ -9,13 +9,17 @@ const index = (req, res) =>
 const findAllProducts = (req, res) => {
   Product.find()
     .then((products) => res.json({ products }))
-    .catch((err) => res.json({ message: "Something went wrong", error: err }));
+    .catch((err) =>
+      res.status(400).json({ message: "Something went wrong", error: err })
+    );
 };
 
 const findOneProduct = (req, res) => {
   Product.findById(req.params.id)
     .then((product) => res.json({ product }))
-    .catch((err) => res.json({ message: "Something went wrong", error: err }));
+    .catch((err) =>
+      res.status(400).json({ message: "Something went wrong", error: err })
+    );
 };
 
 const createProduct = (req, res) => {
@@ -26,7 +30,9 @@ const createProduct = (req, res) => {
     description,
   })
     .then((product) => res.json(product))
-    .catch((err) => res.json("Error:", err));
+    .catch((err) =>
+      res.status(400).json({ message: "Something went wrong", error: err })
+    );
 };
 
 const updateProduct = (req, res) => {
@@ -36,13 +42,17 @@ const updateProduct = (req, res) => {
     runValidators: true,
   })
     .then((product) => res.json({ product }))
-    .catch((err) => res.json({ message: "Something went wrong", error: err }));
+    .catch((err) =>
+      res.status(400).json({ message: "Something went wrong", error: err })
+    );
 };
 
 const deleteProduct = (req, res) => {
   Product.deleteOne({ _id: req.params.id })
     .then((result) => res.json({ result }))
-    .catch((err) => res.json({ message: "Something went wrong", error: err }));
+    .catch((err) =>
+      res.status(400).json({ message: "Something went wrong", error: err })
+    );
 };
 
 module.exports = {
