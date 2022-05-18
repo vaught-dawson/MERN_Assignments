@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Button from "./Button";
 import ProductDeleteButton from "./ProductDeleteButton";
 
 const styles = {
@@ -25,16 +26,26 @@ const styles = {
 };
 
 const ProductListRow = ({ product, refresh }) => {
+  const navigate = useNavigate();
+
   return (
     <div style={styles.div}>
-      <Link to={`/${product._id}`}>{product.title}</Link>
+      <Button
+        onClick={() => navigate(`/${product._id}`)}
+        style={{
+          backgroundColor: "transparent",
+          textDecoration: "underline",
+        }}
+      >
+        {product.title}
+      </Button>
       <div className="options">
-        <Link
-          to={`/${product._id}/edit`}
-          style={{ backgroundColor: "blue", ...styles.button }}
+        <Button
+          onClick={() => navigate(`/${product._id}/edit`)}
+          style={{ backgroundColor: "blue", color: "white" }}
         >
           Edit
-        </Link>
+        </Button>
         <ProductDeleteButton
           productId={product._id}
           callback={() => refresh(true)}
